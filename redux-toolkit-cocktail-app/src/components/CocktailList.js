@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCocktails } from "../redux/features/cocktailSlice";
 import { Link } from "react-router-dom";
 
 const CocktailList = () => {
-  const { cocktails, loading } = useSelector((state) => ({ ...state.app }));
+  const { cocktails, loading } = useSelector((state) => state.app);
   const [modifiedCocktail, setModifiedCocktail] = useState([]);
   const dispatch = useDispatch();
 
@@ -26,9 +26,7 @@ const CocktailList = () => {
         };
       });
       setModifiedCocktail(newCocktails);
-    } else {
-      setModifiedCocktail([]);
-    }
+    } else setModifiedCocktail([]);
   }, [cocktails]);
 
   if (loading) {
@@ -46,8 +44,7 @@ const CocktailList = () => {
   return (
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3 g-4">
-        {modifiedCocktail.map((item) => {
-          const { id, name, image, glass, info } = item;
+        {modifiedCocktail.map(({ id, name, image, glass, info }) => {
           return (
             <div className="col" key={id}>
               <div className="card h-2">

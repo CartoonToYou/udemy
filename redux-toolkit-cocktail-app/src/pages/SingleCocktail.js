@@ -9,7 +9,7 @@ const SingleCocktail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
-    dispatch(fetchSingleCocktail({ id }));
+    dispatch(fetchSingleCocktail(id));
   }, [dispatch, id]);
 
   useEffect(() => {
