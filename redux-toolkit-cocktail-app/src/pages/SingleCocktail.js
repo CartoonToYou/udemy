@@ -4,7 +4,7 @@ import { fetchSingleCocktail } from "../redux/features/cocktailSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const SingleCocktail = () => {
-  const { cocktail, loading } = useSelector((state) => ({ ...state.app }));
+  const { cocktail, loading } = useSelector((state) => state.app);
   const [modifiedCocktail, setModifiedCocktail] = useState([]);
   const dispatch = useDispatch();
   const { id } = useParams();
